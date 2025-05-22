@@ -36,3 +36,13 @@ Route::get('/admin/usuarios/create', [UsuarioController::class, 'create'])
 ->name('admin.usuarios.create')->middleware(middleware:'auth');
 Route::post('/admin/usuarios/create', [UsuarioController::class, 'store'])
 ->name('admin.usuarios.store')->middleware(middleware:'auth');
+Route::get('/admin/usuarios/{id}', [UsuarioController::class, 'show'])
+->name('admin.usuarios.show')->middleware(middleware:'auth');
+Route::get('/admin/usuarios/{id}/edit', [UsuarioController::class, 'edit'])
+->name('admin.usuarios.edit')->middleware(middleware:'auth');
+Route::put('/admin/usuarios/{id}', [UsuarioController::class, 'update'])
+->name('admin.usuarios.update')->middleware(middleware:'auth');
+Route::get('/admin/usuarios/{id}/confirm-delete', [UsuarioController::class, 'confirmDelete'])
+->name('admin.usuarios.confirmDelete')->middleware(middleware:'auth');
+Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
+->name('admin.usuarios.destroy')->middleware(middleware:'auth');
