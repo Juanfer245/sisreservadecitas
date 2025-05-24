@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth; // 👈 Importación necesaria
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,9 @@ Route::get('/admin/usuarios/{id}/confirm-delete', [UsuarioController::class, 'co
 ->name('admin.usuarios.confirmDelete')->middleware(middleware:'auth');
 Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
 ->name('admin.usuarios.destroy')->middleware(middleware:'auth');
+
+//rutas para el admin - secretarias
+Route::get('/admin/secretarias', [SecretariaController::class, 'index'])
+->name('admin.secretarias.index')->middleware(middleware:'auth');
+Route::get('/admin/secretarias/create', [SecretariaController::class, 'create'])
+->name('admin.secretarias.create')->middleware(middleware:'auth');
