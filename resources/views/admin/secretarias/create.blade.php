@@ -13,7 +13,7 @@
                 <h3 class="card-title">Llene los datos</h3>
             </div>
             <div class="card-body">
-                <form action="{{ url('/admin/usuarios/create') }}" method="post">
+                <form action="{{ url('/admin/secretarias/create') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
@@ -67,7 +67,7 @@
                         <div class="col-md-9">
                             <div class="form group">
                                 <label for="">Direccion</label> <b>*</b>
-                                <input type="email" value="{{ old('direccion') }}" name="direccion" class="form-control" required>
+                                <input type="address" value="{{ old('direccion') }}" name="direccion" class="form-control" required>
                                 @error('direccion')
                                 <small style="color:red">{{ $message }}</small>
                                 @enderror
@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form group">
-                                <a href="{{ url('admin/usuarios') }}" class="btn btn-secondary">Cancelar</a>
+                                <a href="{{ url('admin/cecretarias') }}" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">Registrar Nuevo</button>
                             </div>
                         </div>

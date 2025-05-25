@@ -5,7 +5,7 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-12">
     <div class="card card-outline card-primary">
       <div class="card-header">
         <h3 class="card-title">Secretarias Registradas</h3>
@@ -37,7 +37,12 @@
             <tr>
               <td style="text-align:center">{{ $contador++ }}</td>
               <td style="text-align:center">{{ $secretaria->nombres }}</td>
-              <td style="text-align:center">{{ $secretaria->apellidos }}
+              <td style="text-align:center">{{ $secretaria->apellidos }}</td>
+              <td style="text-align:center">{{ $secretaria->ci }}</td>
+              <td style="text-align:center">{{ $secretaria->celular }}</td>
+              <td style="text-align:center">{{ $secretaria->fecha_nacimiento }}</td>
+              <td style="text-align:center">{{ $secretaria->direccion }}</td>
+              <td style="text-align:center">{{ $secretaria->user->email }}</td>
               <td style="text-align: center;">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="{{ url('/admin/secretarias/'.$secretaria->id) }}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
