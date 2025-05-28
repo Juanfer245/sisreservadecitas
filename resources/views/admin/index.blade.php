@@ -19,5 +19,18 @@
               <a href="{{ url('admin/usuarios') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
             </div>
           </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3>{{ $total_secretarias }}</h3>
+                <p>Secretaria</p>
+              </div>
+              <div class="icon">
+                <i class="ion fas bi bi-file-person"></i>
+              </div>
+              <a href="{{ url('admin/secretarias') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+            </div>
+          </div>
   </div>
 @endsection

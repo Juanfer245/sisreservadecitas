@@ -57,3 +57,11 @@ Route::post('/admin/secretarias/create', [SecretariaController::class, 'store'])
 ->name('admin.secretarias.store')->middleware(middleware:'auth');
 Route::get('/admin/secretarias/{id}', [SecretariaController::class, 'show'])
 ->name('admin.secretarias.show')->middleware(middleware:'auth');
+Route::get('/admin/secretarias/{id}/edit', [SecretariaController::class, 'edit'])
+->name('admin.secretarias.edit')->middleware(middleware:'auth');
+Route::put('/admin/secretarias/{id}', [SecretariaController::class, 'update'])
+->name('admin.secretarias.update')->middleware(middleware:'auth');
+Route::get('/admin/secretarias/{id}/confirm-delete', [SecretariaController::class, 'confirmDelete'])
+->name('admin.secretarias.confirmDelete')->middleware(middleware:'auth');
+Route::delete('/admin/secretarias/{id}', [SecretariaController::class, 'destroy'])
+->name('admin.secretarias.destroy')->middleware(middleware:'auth');
