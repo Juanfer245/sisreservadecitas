@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Auth; // 👈 Importación necesaria
@@ -65,3 +66,20 @@ Route::get('/admin/secretarias/{id}/confirm-delete', [SecretariaController::clas
 ->name('admin.secretarias.confirmDelete')->middleware(middleware:'auth');
 Route::delete('/admin/secretarias/{id}', [SecretariaController::class, 'destroy'])
 ->name('admin.secretarias.destroy')->middleware(middleware:'auth');
+//rutas para el admin - pacientes
+Route::get('/admin/pacientes', [PacienteController::class, 'index'])
+->name('admin.pacientes.index')->middleware(middleware:'auth');
+Route::get('/admin/pacientes/create', [PacienteController::class, 'create'])
+->name('admin.pacientes.create')->middleware(middleware:'auth');
+Route::post('/admin/pacientes/create', [PacienteController::class, 'store'])
+->name('admin.pacientes.store')->middleware(middleware:'auth');
+Route::get('/admin/pacientes/{id}', [PacienteController::class, 'show'])
+->name('admin.pacientes.show')->middleware(middleware:'auth');
+Route::get('/admin/pacientes/{id}/edit', [PacienteController::class, 'edit'])
+->name('admin.pacientes.edit')->middleware(middleware:'auth');
+Route::put('/admin/pacientes/{id}', [PacienteController::class, 'update'])
+->name('admin.pacientes.update')->middleware(middleware:'auth');
+Route::get('/admin/pacientes/{id}/confirm-delete', [PacienteController::class, 'confirmDelete'])
+->name('admin.pacientes.confirmDelete')->middleware(middleware:'auth');
+Route::delete('/admin/pacientes/{id}', [PacienteController::class, 'destroy'])
+->name('admin.pacientes.destroy')->middleware(middleware:'auth');

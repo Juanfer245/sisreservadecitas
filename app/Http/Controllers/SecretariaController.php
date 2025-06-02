@@ -14,8 +14,8 @@ class SecretariaController extends Controller
      */
     public function index()
     {
-        $secretarias=Secretaria::with('user')->get();
-        return view('admin.secretarias.index',compact('secretarias'));
+        $secretarias = Secretaria::with('user')->get();
+        return view('admin.secretarias.index', compact('secretarias'));
     }
 
     /**
@@ -34,36 +34,35 @@ class SecretariaController extends Controller
         //$datos = request()->all();
         //return response()->json($datos);
         $request->validate([
-            'nombres'=>'required',
-            'apellidos'=>'required',
-            'ci'=>'required|unique:secretarias',
-            'celular'=>'required',
-            'fecha_nacimiento'=>'required',
-            'direccion'=>'required',
-            'email'=>'required|max:250|unique:users',
-            'password'=>'required|max:250|confirmed',
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'ci' => 'required|unique:secretarias',
+            'celular' => 'required',
+            'fecha_nacimiento' => 'required',
+            'direccion' => 'required',
+            'email' => 'required|max:250|unique:users',
+            'password' => 'required|max:250|confirmed',
         ]);
 
-$usuario = new User();
+        $usuario = new User();
         $usuario->name = $request->nombres;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request['password']);
         $usuario->save();
 
-        $secretaria=new Secretaria();
-        $secretaria->user_id=$usuario->id;
-        $secretaria->nombres=$request->nombres;
-        $secretaria->apellidos=$request->apellidos;
-        $secretaria->ci=$request->ci;
-        $secretaria->celular=$request->celular;
-        $secretaria->fecha_nacimiento=$request->fecha_nacimiento;
-        $secretaria->direccion=$request->direccion;
+        $secretaria = new Secretaria();
+        $secretaria->user_id = $usuario->id;
+        $secretaria->nombres = $request->nombres;
+        $secretaria->apellidos = $request->apellidos;
+        $secretaria->ci = $request->ci;
+        $secretaria->celular = $request->celular;
+        $secretaria->fecha_nacimiento = $request->fecha_nacimiento;
+        $secretaria->direccion = $request->direccion;
         $secretaria->save();
 
         return redirect()->route('admin.secretarias.index')
             ->with('mensaje', 'Se registro de manera correcta')
             ->with('icono', 'success');
-
     }
 
     /**
@@ -71,8 +70,8 @@ $usuario = new User();
      */
     public function show($id)
     {
-        $secretaria=Secretaria::with('user')->findOrFail($id);
-        return view('admin.secretarias.show',compact('secretaria'));
+        $secretaria = Secretaria::with('user')->findOrFail($id);
+        return view('admin.secretarias.show', compact('secretaria'));
     }
 
     /**
@@ -80,8 +79,8 @@ $usuario = new User();
      */
     public function edit($id)
     {
-        $secretaria=Secretaria::with('user')->findOrFail($id);
-        return view('admin.secretarias.edit',compact('secretaria'));
+        $secretaria = Secretaria::with('user')->findOrFail($id);
+        return view('admin.secretarias.edit', compact('secretaria'));
     }
 
     /**
@@ -89,29 +88,29 @@ $usuario = new User();
      */
     public function update(Request $request, $id)
     {
-        $secretaria=Secretaria::find($id);
-        
+        $secretaria = Secretaria::find($id);
+
         //$usuario=User::find($id);
         $request->validate([
-            'nombres'=>'required',
-            'apellidos'=>'required',
-            'ci'=>'required|unique:secretarias,ci,'. $secretaria->id,
-            'celular'=>'required',
-            'fecha_nacimiento'=>'required',
-            'direccion'=>'required',
-            'email'=>'required|max:250|unique:users,email,'.$secretaria->user->id,
-            'password'=>'nullable|max:250|confirmed',
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'ci' => 'required|unique:secretarias,ci,' . $secretaria->id,
+            'celular' => 'required',
+            'fecha_nacimiento' => 'required',
+            'direccion' => 'required',
+            'email' => 'required|max:250|unique:users,email,' . $secretaria->user->id,
+            'password' => 'nullable|max:250|confirmed',
         ]);
 
-        $secretaria->nombres=$request->nombres;
-        $secretaria->apellidos=$request->apellidos;
-        $secretaria->ci=$request->ci;
-        $secretaria->celular=$request->celular;
-        $secretaria->fecha_nacimiento=$request->fecha_nacimiento;
-        $secretaria->direccion=$request->direccion;
+        $secretaria->nombres = $request->nombres;
+        $secretaria->apellidos = $request->apellidos;
+        $secretaria->ci = $request->ci;
+        $secretaria->celular = $request->celular;
+        $secretaria->fecha_nacimiento = $request->fecha_nacimiento;
+        $secretaria->direccion = $request->direccion;
         $secretaria->save();
-        
-        $usuario=User::find($secretaria->user->id);
+
+        $usuario = User::find($secretaria->user->id);
         $usuario->name = $request->nombres;
         $usuario->email = $request->email;
         if ($request->filled('password')) {
@@ -128,16 +127,17 @@ $usuario = new User();
     /**
      * Remove the specified resource from storage.
      */
-    public function confirmDelete($id){
-        $secretaria=Secretaria::with('user')->findOrFail($id);
-        return view('admin.secretarias.delete',compact('secretaria'));
+    public function confirmDelete($id)
+    {
+        $secretaria = Secretaria::with('user')->findOrFail($id);
+        return view('admin.secretarias.delete', compact('secretaria'));
     }
     public function destroy($id)
     {
         $secretaria =  Secretaria::find($id);
 
         //eliminar al usuario asociado
-        $user=$secretaria->user;
+        $user = $secretaria->user;
         $user->delete();
 
         //eliminar a la secretaria
