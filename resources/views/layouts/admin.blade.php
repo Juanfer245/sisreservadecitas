@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
-                        <li class="nav-item">
+            <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas bi bi-person-fill-check"></i>
                 <p>
@@ -157,6 +157,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </ul>
             </li>
             <li class="nav-item">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas bi bi-building-fill-add"></i>
+                <p>
+                  Consultorios
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ url('admin/consultorios/create') }}" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Creacion de consultorios</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ url('admin/consultorios') }}" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Listado de consultorios</p>
+                  </a>
+                </li>
+                </ul>
+                </li>
+            <li class="nav-item">
               <a href="#" class="nav-link" style="background-color: #a9200e;">
                 <i class="nav-icon fas bi bi-door-closed"></i>
                 <p>
@@ -174,7 +197,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @if ((($message=Session::get('mensaje')) && ($icono=Session::get('icono'))))
     <script>
       Swal.fire({
-        position: "top-end",
         icon: "{{ $icono }}",
         title: "{{ $message }}",
         showConfirmButton: false,
@@ -201,7 +223,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main Footer -->
     <footer class="main-footer">
-      <!-- To the right -->    </footer>
+      <!-- To the right -->
+    </footer>
   </div>
   <!-- ./wrapper -->
 
