@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConsultorioController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\UsuarioController;
@@ -119,3 +120,20 @@ Route::get('/admin/doctores/{id}/confirm-delete', [DoctorController::class, 'con
 ->name('admin.doctores.confirmDelete')->middleware(middleware:'auth');
 Route::delete('/admin/doctores/{id}', [DoctorController::class, 'destroy'])
 ->name('admin.doctores.destroy')->middleware(middleware:'auth');
+//rutas para el admin - horarios
+Route::get('/admin/horarios', [HorarioController::class, 'index'])
+->name('admin.horarios.index')->middleware(middleware:'auth');
+Route::get('/admin/horarios/create', [HorarioController::class, 'create'])
+->name('admin.horarios.create')->middleware(middleware:'auth');
+Route::post('/admin/horarios/create', [HorarioController::class, 'store'])
+->name('admin.horarios.store')->middleware(middleware:'auth');
+Route::get('/admin/horarios/{id}', [HorarioController::class, 'show'])
+->name('admin.horarios.show')->middleware(middleware:'auth');
+Route::get('/admin/horarios/{id}/edit', [HorarioController::class, 'edit'])
+->name('admin.horarios.edit')->middleware(middleware:'auth');
+Route::put('/admin/horarios/{id}', [HorarioController::class, 'update'])
+->name('admin.horarios.update')->middleware(middleware:'auth');
+Route::get('/admin/horarios/{id}/confirm-delete', [HorarioController::class, 'confirmDelete'])
+->name('admin.horarios.confirmDelete')->middleware(middleware:'auth');
+Route::delete('/admin/horarios/{id}', [HorarioController::class, 'destroy'])
+->name('admin.horarios.destroy')->middleware(middleware:'auth');

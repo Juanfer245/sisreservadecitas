@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
-    <h1>Listado de Doctores</h1>
+    <h1>Listado de Horarios</h1>
 </div>
 <hr>
 <div class="row">
     <div class="col-md-12">
         <div class="card card-outline card-primary">
             <div class="card-header">
-                <h3 class="card-title">Doctores Registrados</h3>
+                <h3 class="card-title">Horarios Registrados</h3>
                 <div class="card-tools">
-                    <a href="{{ url('admin/doctores/create') }}" class="btn btn-primary">
+                    <a href="{{ url('admin/horarios/create') }}" class="btn btn-primary">
                         Registrar Nuevo
                     </a>
                 </div>
@@ -31,19 +31,19 @@
                     </thead>
                     <tbody>
                         <?php $contador = 1; ?>
-                        @foreach ($doctores as $doctore)
+                        @foreach ($horarios as $horario)
                         <tr>
                             <td style="text-align:center">{{ $contador++ }}</td>
-                            <td style="text-align:center">{{ $doctore->nombres ." ".$doctore->apellidos}}</td>
-                            <td style="text-align:center">{{ $doctore->telefono}}
-                            <td style="text-align:center">{{ $doctore->licencia_medica }}
-                            <td style="text-align:center">{{ $doctore->especialidad }}
-                            <td style="text-align:center">{{ $doctore->user->email }}
+                            <td style="text-align:center">{{ $horario->nombres ." ".$horario->apellidos}}</td>
+                            <td style="text-align:center">{{ $horario->telefono}}
+                            <td style="text-align:center">{{ $horario->licencia_medica }}
+                            <td style="text-align:center">{{ $horario->especialidad }}
+                            <td style="text-align:center">{{ $horario->user->email }}
                             <td style="text-align: center;">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ url('/admin/doctores/'.$doctore->id) }}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
-                                    <a href="{{ url('admin/doctores/'.$doctore->id.'/edit') }} " type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                    <a href="{{ url('admin/doctores/'.$doctore->id.'/confirm-delete') }}" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                    <a href="{{ url('/admin/horarios/'.$horario->id) }}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ url('admin/horarios/'.$horario->id.'/edit') }} " type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                    <a href="{{ url('admin/horarios/'.$horario->id.'/confirm-delete') }}" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
                                 </div>
                             </td>
                             </td>
@@ -57,9 +57,9 @@
                             "pageLength": 5,
                             "language": {
                                 "emptyTable": "No hay información",
-                                "info": "Mostrando _START_ a _END_ de _TOTAL_ Doctores",
-                                "infoEmpty": "Mostrando 0 a 0 de 0 Doctores",
-                                "infoFiltered": "(Filtrado de _MAX_ total Doctores)",
+                                "info": "Mostrando _START_ a _END_ de _TOTAL_ Horarios",
+                                "infoEmpty": "Mostrando 0 a 0 de 0 Horarios",
+                                "infoFiltered": "(Filtrado de _MAX_ total Horarios)",
                                 "infoPostFix": "",
                                 "thousands": ",",
                                 "lengthMenu": "Mostrar _MENU_ Doctores",

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consultorio;
+use App\Models\Doctor;
 use App\Models\Horario;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,8 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        //
+        $horarios = Horario::with('doctor','consultorio')->get();
+        return view('admin.horarios.index',compact('horarios'));
     }
 
     /**
@@ -20,7 +23,9 @@ class HorarioController extends Controller
      */
     public function create()
     {
-        //
+        $doctores = Doctor::all();
+        $consultorios = Consultorio::all();
+        return view('admin.horarios.create', compact('doctores','consultorios'));
     }
 
     /**
