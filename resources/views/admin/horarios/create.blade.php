@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form group">
-                                <a href="{{ url('admin/secretarias') }}" class="btn btn-secondary">Cancelar</a>
+                                <a href="{{ url('admin/horarios') }}" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">Registrar Nuevo</button>
                             </div>
                         </div>
