@@ -13,8 +13,31 @@
                 <h3 class="card-title">Llene los datos</h3>
             </div>
             <div class="card-body">
-                <form action="{{ url('/admin/doctores/create') }}" method="post">
+                <form action="{{ url('/admin/horarios/create') }}" method="post">
                     @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form group">
+                                <label for="">Doctores</label> <b>*</b>
+                                <select name="doctor_id" id="" class="form-control">
+                                    @foreach ($doctores as $doctore)
+                                    <option value="{{ $doctore->id }}">{{ $doctore->nombres." ".$doctore->apellidos."-".$doctore->especialidad}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form group">
+                                <label for="">Consultorio</label> <b>*</b>
+                                <select name="consultorio_id" id="" class="form-control">
+                                    @foreach ($consultorios as $consultorio)
+                                    <option value="{{ $consultorio->id }}">{{ $consultorio->nombre."-".$consultorio->ubicacion }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form group">
@@ -42,33 +65,10 @@
                         <div class="col-md-4">
                             <div class="form group">
                                 <label for="">Hora Final</label> <b>*</b>
-                                <input type="time" value="{{ old('hora_final')}}" name="hora_final" class="form-control" required>
-                                @error('hora_final')
+                                <input type="time" value="{{ old('hora_fin')}}" name="hora_fin" class="form-control" required>
+                                @error('hora_fin')
                                 <small style="color:red">{{ $message }}</small>
                                 @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form group">
-                                <label for="">Doctores</label> <b>*</b>
-                                <select name="doctor_id" id="" class="form-control">
-                                    @foreach ($doctores as $doctore)
-                                    <option value="{{ $doctore->id }}">{{ $doctore->nombres." ".$doctore->apellidos."-".$doctore->especialidad}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form group">
-                                <label for="">Consultorio</label> <b>*</b>
-                                <select name="consultorio_id" id="" class="form-control">
-                                    @foreach ($consultorios as $consultorio)
-                                    <option value="{{ $consultorio->id }}">{{ $consultorio->nombre."-".$consultorio->ubicacion }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                         </div>
                     </div>

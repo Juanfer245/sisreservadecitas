@@ -21,12 +21,14 @@
                     <thead style="background-color: #c0c0c0">
                         <tr>
                             <td style="text-align:center"><b>Nro</b></td>
-                            <td style="text-align:center"><b>Nombres y Apellidos</b></td>
-                            <td style="text-align:center"><b>Telefono</b></td>
-                            <td style="text-align:center"><b>Licencia Medica</b></td>
+                            <td style="text-align:center"><b>Doctor</b></td>
                             <td style="text-align:center"><b>Especialidad</b></td>
-                            <td style="text-align:center"><b>Email</b></td>
+                            <td style="text-align:center"><b>Consultorio</b></td>
+                            <td style="text-align:center"><b>Dia de atencion</b></td>
+                            <td style="text-align:center"><b>Hora inicio</b></td>
+                            <td style="text-align:center"><b>Hora fin</b></td>
                             <td style="text-align:center"><b>Acciones</b></td>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -34,11 +36,12 @@
                         @foreach ($horarios as $horario)
                         <tr>
                             <td style="text-align:center">{{ $contador++ }}</td>
-                            <td style="text-align:center">{{ $horario->nombres ." ".$horario->apellidos}}</td>
-                            <td style="text-align:center">{{ $horario->telefono}}
-                            <td style="text-align:center">{{ $horario->licencia_medica }}
-                            <td style="text-align:center">{{ $horario->especialidad }}
-                            <td style="text-align:center">{{ $horario->user->email }}
+                            <td style="text-align:center">{{ $horario->doctor->nombres ." ".$horario->apellidos}}</td>
+                            <td style="text-align:center">{{ $horario->doctor->especialidad}}
+                            <td style="text-align:center">{{ $horario->consultorio->nombre."Ubicacion:" .$horario->consultorio->ubicacion}}
+                            <td style="text-align:center">{{ $horario->dia}}
+                            <td style="text-align:center">{{ $horario->hora_inicio}}
+                            <td style="text-align:center">{{ $horario->hora_fin}}
                             <td style="text-align: center;">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{ url('/admin/horarios/'.$horario->id) }}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>

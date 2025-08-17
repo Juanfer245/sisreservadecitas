@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('hora_fin');
 
            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
-            $table->foreignId('consultorios_id')->constrained('consultorios')->onDelete('cascade');
+            $table->foreignId('consultorio_id')->constrained('consultorios')->onDelete('cascade');
             $table->timestamps();
         });
     }
