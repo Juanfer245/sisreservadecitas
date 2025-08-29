@@ -226,12 +226,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" style="background-color: #a9200e;">
+              <a href="{{ route('logout') }}" class="nav-link" style="background-color: #a9200e;"
+                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit()">
                 <i class="nav-icon fas bi bi-door-closed"></i>
                 <p>
                   Cerrar Sesión
                 </p>
               </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </li>
           </ul>
         </nav>

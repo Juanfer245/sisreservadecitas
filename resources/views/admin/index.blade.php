@@ -74,5 +74,18 @@
               <a href="{{ url('admin/doctores') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
             </div>
           </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+              <div class="inner">
+                <h3>{{ $total_horarios }}</h3>
+                <p>Horarios</p>
+              </div>
+              <div class="icon">
+                <i class="ion fas bi bi-calendar2-week"></i>
+              </div>
+              <a href="{{ url('admin/horarios') }}" class="small-box-footer">Más información <i class="fas bi bi-file-person"></i></a>
+            </div>
+          </div>
   </div>
 @endsection
