@@ -82,7 +82,7 @@
                 <!-- /.social-auth-links -->
 
                 <p class="mb-0">
-                    <a href="register.html" class="text-center">No tienes cuenta?</a>
+                    <a href="{{ url('register') }}" class="text-center">No tienes cuenta?</a>
                 </p>
             </div>
             <!-- /.card-body -->
