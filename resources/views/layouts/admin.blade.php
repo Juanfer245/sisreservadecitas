@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
+      <a href="" class="brand-link">
         <img src="{{url('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">SIS LEXXA</span>
       </a>
@@ -87,6 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               @can('admin.usuarios.index')
             <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas bi bi-people-fill"></i>
@@ -110,6 +111,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
+            @can('admin.secretarias.index')
             <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas bi bi-person-circle"></i>
@@ -133,6 +136,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
+            @can('admin.pacientes.index')
             <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas bi bi-person-fill-check"></i>
@@ -156,6 +161,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
+            @can('admin.doctores.index')
             <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas bi bi-building-fill-add"></i>
@@ -202,6 +209,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
+            @can('admin.horarios.index')
             <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas bi bi-calendar2-week"></i>
@@ -225,6 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
             <li class="nav-item">
               <a href="{{ route('logout') }}" class="nav-link" style="background-color: #a9200e;"
                 onclick="event.preventDefault();
