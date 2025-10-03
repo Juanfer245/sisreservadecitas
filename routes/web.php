@@ -8,6 +8,7 @@ use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth; // 👈 Importación necesaria
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,15 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('index');
+//ajax
+Route::get('/consultorios/{id}', [WebController::class, 'cargar_datos_consultorios'])
+->name('cargar_datos_consultorios');
+
 Auth::routes();
 
 // en routes/web.php
-Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //rutas para el admin
 Route::get('/admin', [AdminController::class, 'index'])

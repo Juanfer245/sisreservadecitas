@@ -28,6 +28,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+    <!-- jQuery -->
+  <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
+
   <!-- =======================================================
   * Template Name: Medilab
   * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
@@ -162,6 +165,67 @@
       </div>
 
     </section><!-- /Hero Section -->
+
+
+    <br><br>
+    <div class="container">
+      <div class="row">
+    <div class="col-md-12">
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="card-title">Calendario de atencion de odontologos</h3>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="float:right">
+                            <label for="">Consultorio:</label>
+                            </div>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="consultorio_id" id="consultorio_select" class="form-control">
+                            <option value="">Seleccione un consultorio...</option>
+                                @foreach ($consultorios as $consultorio)
+                                <option value="{{ $consultorio->id }}">{{ $consultorio->nombre."-".$consultorio->ubicacion }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <script>
+                    $('#consultorio_select').on('change', function() {
+                        var consultorio_id = $('#consultorio_select').val();
+                        //alert(consultorio_id);
+                        var url = "{{route('cargar_datos_consultorios',':id')}}";
+                        url = url.replace(':id', consultorio_id);
+
+                        //alert(url);
+                        if (consultorio_id) {
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                success: function(data) {
+                                    $('#consultorio_info').html(data);
+                                },
+                                error: function() {
+                                    alert('error al obtener los datos del consultorio');
+                                }
+                            });
+                        } else {
+                            $('#consultorio_info').html('');
+                        }
+                    });
+                </script>
+                <hr>
+                <div id="consultorio_info">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="about section">

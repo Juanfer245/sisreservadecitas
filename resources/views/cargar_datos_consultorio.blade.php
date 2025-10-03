@@ -1,5 +1,7 @@
 <?php
 ?>
+
+<h3><p><center><b>Horario de atención del consultorio de {{ $consultorio->nombre }}</b></center></p></h3>
 <table style="font-size:15px; text-align: center" class="table table-striped table-hover table-sm table-bordered">
     <thead>
         <tr style="text-align:center">
