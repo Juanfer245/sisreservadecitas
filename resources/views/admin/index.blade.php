@@ -181,22 +181,88 @@
         </div>
       </div>
       <div class="card-body">
+        <div class="row">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Registrar Cita
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Reserva de Cita</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="">Doctor</label>
+                        <select name="" id="" class="form-control">
+                          @foreach ($doctores as $doctore)
+                          <option value="{{ $doctore->id }}">
+                          {{ $doctore->nombres." ".$doctore->apellidos."-".$doctore->especialidad}}
+                        </option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="">Fecha de reserva</label>
+                        <input type="date" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="">Hora de reserva</label>
+                        <input type="time" class="form-control">
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary">Registrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id='calendar'></div>
       </div>
     </div>
   </div>
 </div>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
-          locale:'es'
-        });
-        calendar.render();
-      });
-
-    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'es',
+      events: [{
+        title: '08:00-09:00 Consultorio odontologico',
+        start: '2025-10-12',
+        end: '2025-10-12',
+        color: '#fc9f57ff',
+      }, {
+        title: '08:00-09:00 Consultorio pediatrico',
+        start: '2025-10-14',
+        end: '2025-10-14',
+        color: '#fc9f57ff',
+      }, {
+        title: '09:00-10:00 Consultorio pediatricoo',
+        start: '2025-10-14',
+        end: '2025-10-14',
+        color: '#fc9f57ff',
+      }]
+    });
+    calendar.render();
+  });
+</script>
 @endsection
