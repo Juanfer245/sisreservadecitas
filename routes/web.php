@@ -3,12 +3,14 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConsultorioController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\WebController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Auth; // 👈 Importación necesaria
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('ind
 //ajax
 Route::get('/consultorios/{id}', [WebController::class, 'cargar_datos_consultorios'])
 ->name('cargar_datos_consultorios');
+Route::post('/admin/eventos/create', [EventController::class, 'store'])
+->name('admin.eventos.create');
 
 Auth::routes();
 

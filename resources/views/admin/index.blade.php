@@ -188,7 +188,9 @@
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <form action="{{ url('/admin/eventos/create') }}" method="post">
+            @csrf
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -202,7 +204,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Doctor</label>
-                        <select name="" id="" class="form-control">
+                        <select name="doctor_id" id="" class="form-control">
                           @foreach ($doctores as $doctore)
                           <option value="{{ $doctore->id }}">
                           {{ $doctore->nombres." ".$doctore->apellidos."-".$doctore->especialidad}}
@@ -214,24 +216,25 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Fecha de reserva</label>
-                        <input type="date" class="form-control">
+                        <input type="date" name="fecha_reserva" class="form-control">
                       </div>
                     </div>
                   </div>
                   <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Hora de reserva</label>
-                        <input type="time" class="form-control">
+                        <input type="time" name="hora_reserva" class="form-control">
                       </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary">Registrar</button>
+                  <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
               </div>
             </div>
           </div>
+          </form>
         </div>
         <div id='calendar'></div>
       </div>
